@@ -39,7 +39,7 @@ jshtml = json.loads(html)
 print(jshtml['data'])
 
 if jshtml['data'][0]['title'] == form['input']:
-    path = '/Users/laojiajun/' + jshtml['data'][0]['title'] + ".mp3"
+    path = '/Users/laojiajun/Desktop/project/pythonProject/music/' + jshtml['data'][0]['title'] + ".mp3"
     print("保存路径======" + path)
     print("保存链接======" + jshtml['data'][0]['title'])
     print(jshtml['data'][0]['url'])

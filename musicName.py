@@ -5,7 +5,7 @@ import time
 import urllib.parse
 import json
 
-basePath = '/Users/laojiajun/'
+basePath = '/Users/laojiajun/Desktop/project/pythonProject/music/'
 url = 'http://music.sonimei.cn/'
 
 
@@ -66,7 +66,7 @@ def getSingerData(name,type,num):
     #     print(jshtml['data'][0]['url'])
     #     urllib.request.urlretrieve(jshtml['data'][0]['url'], path)
 
-    return jshtml;
+    return jshtml
 
 currlist = []
 
@@ -98,7 +98,7 @@ def getAllMusicBySinger():
     print('开始时间')
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     while num<30:
-        dataList = getSingerData("光年之外", "kugou", num)
+        dataList = getSingerData("林俊杰", "kugou", num)
         # time.sleep(5)
         if len(dataList)>0:
             parseData(dataList)
