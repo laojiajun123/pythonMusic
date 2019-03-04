@@ -73,7 +73,7 @@ class MusicName():
         return jshtml
 
     currlist = []
-
+isType = 0
     def parseData(self,jshtml,cont):
         print("开始解析======")
 
@@ -95,6 +95,8 @@ class MusicName():
                         self.currlist.append(datalist['title'])
                         urllib.request.urlretrieve(datalist['url'], path)
             else:
+                global isType
+                isType = 1
                 cont.AppendText("下载"+jshtml['data'][0]['title']+"\n")
                 print("初始数据-=======" + jshtml['data'][0]['title'])
                 path = self.basePath + jshtml['data'][0]['title'] + "_" + jshtml['data'][0]['author'] + ".mp3"
@@ -143,13 +145,16 @@ class MusicName():
         contentDO.AppendText('开始\n')
         print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         while num<30:
-            dataList =self.getSingerData(muName, "kugou", num)
-            # time.sleep(5)
-            if len(dataList)>0:
-                self.parseData(dataList,contentDO)
+            if isType==0:
+                dataList =self.getSingerData(muName, "kugou", num)
+                # time.sleep(5)
+                if len(dataList)>0:
+                    self.parseData(dataList,contentDO)
+                else:
+                    break
+                num = num+1
             else:
                 break
-            num = num+1
 
         contentDO.AppendText('结束\n')
         print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
