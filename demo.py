@@ -1,14 +1,13 @@
 import wx
 # import MusicName
 import time
-from musicName import MusicName
 import urllib
 import urllib.request
-import re
-import time
 import urllib.parse
 import json
-
+import os
+import re
+import threading
 
 
 
@@ -121,11 +120,6 @@ currlist = []
 def parseData(jshtml,cont):
     print("开始解析======")
 
-    # 校验文件夹
-    # print("数据"+self.os.basePath.isdir())
-
-
-
     dataLen = len(jshtml['data'])
     if dataLen > 0:
         reStr = jshtml['data'][0]['title']
@@ -186,6 +180,10 @@ def getMusicBySinger(muName,contentDO):
     num =1
     contentDO.AppendText('开始\n')
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    if(os.path.exists(basePath) is not True):
+        # 创建文件夹
+        os.mkdir(basePath)
+
     while num<30:
         dataList =getSingerData(muName, "kugou", num)
         # time.sleep(5)
