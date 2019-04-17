@@ -53,7 +53,7 @@ def openWindows():
 
 
  # basePath = '/Users/laojiajun/Desktop/project/pythonProject/music/'
-basePath = 'E:\\music\\'
+basePath = 'F:\\音乐\\musicfile\\'
 url = 'http://music.sonimei.cn/'
 
 
